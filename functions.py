@@ -16,7 +16,7 @@ from sklearn.metrics import f1_score
 
 
 
-def load_muba_data(dir_path: str = "brain_tumor_dataset",
+def load_muba_data(dir_path: str = "Alzheimer's Disease",
               IMAGE_SHAPE: tuple = (224, 224),
               random_sample: int = 1,
               verbose: bool = True):
@@ -60,9 +60,8 @@ def load_muba_data(dir_path: str = "brain_tumor_dataset",
 
     # Split the data into testing, training and validation data
     # As using a random sample = 1, the testing set is the same as used for the model.
-    x_train, x_tv, y_train, y_tv = train_test_split(files, ground_truth, test_size=.3, random_state = random_sample)
-    x_test, x_val, y_test, y_val = train_test_split(x_tv, y_tv, test_size=.5, random_state = random_sample)
-
+    x_train, x_tv, y_train, y_tv = train_test_split(files, ground_truth, test_size=.05, random_state = random_sample) 
+    x_test, x_val, y_test, y_val = train_test_split(x_tv, y_tv, test_size=.5, random_state = random_sample) 
     for file, label in zip(x_test, y_test):
 
         # Prepare the image
